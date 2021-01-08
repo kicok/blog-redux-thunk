@@ -13,8 +13,7 @@ class PostList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return { dummyReducer: state.dummyReducer };
+  return { posts: state.posts };
 };
 
 export default connect(mapStateToProps, { fetchPosts })(PostList);
