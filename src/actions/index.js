@@ -15,6 +15,16 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   // await 필요없음. 여기서 원하는것은 개별사용자를 가져오도록 요청하는것을 시작하는 것 뿐.
   // 즉 기다릴 필요가 없다. lazy 방식.. component 파일에서 호출할때 값을 가져온다.
   userIds.forEach((id) => dispatch(fetchUser(id)));
+
+  // 위 코드를 아래의 체이닝 기법으로 변경 가능 https://jeonghwan-kim.github.io/js/2017/05/11/pipeline.html
+  // 마지막의 .value()가 있어야 값이 출력된다.
+  // _.chain(getState().posts)
+  //   .map('userId')
+  //   .uniq()
+  //   .forEach((id) => dispatch(fetchUser(id)))
+  //   .value();
+
+  //.map()
 };
 
 export const fetchPosts = () => async (dispatch) => {
